@@ -7,29 +7,28 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="h-16 bg-background w-full flex justify-between items-center px-4 md:px-8 border-b border-dashed border-[#27548A] fixed top-0 left-0 z-50">
+    <header className="h-16 bg-background w-full flex justify-between items-center px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 border-b border-dashed border-[#74512D] fixed top-0 left-0 z-50">
       {/* Logo */}
-      <div className="text-3xl font-semibold font-della text-[#27548A]">
+      <div className="text-3xl font-semibold font-della text-[#74512D]">
         Infomaniac
       </div>
 
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center space-x-6">
-        <button className="text-sm font-open font-semibold text-[#27548A]">Categories</button>
-        <button className="text-sm font-open font-semibold text-[#27548A]">Donate</button>
-        <button className="text-sm font-open font-semibold text-[#27548A]">About us</button>
-        <button className="text-sm font-open font-semibold text-[#27548A]">Log in</button>
-        <button className="text-sm font-open font-semibold bg-[#27548A] text-white px-4 py-2">Subscribe</button>
+        <button className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">Categories</button>
+        <button className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">Donate</button>
+        <button className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">About me</button>
+        <button className="text-sm font-open font-semibold cursor-pointer bg-[#74512D] text-background px-4 py-2 rounded-full">Subscribe</button>
       </div>
 
       {/* Mobile Nav Button */}
       <div className="md:hidden flex items-center">
-        <button className="text-sm font-open font-semibold bg-[#27548A] text-white px-3 py-2 mr-2">
+        <button className="text-sm font-open font-semibold bg-[#74512D] text-white px-3 py-2 mr-2">
           Subscribe
         </button>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-[#27548A] text-2xl"
+          className="text-[#74512D] text-2xl"
           aria-label="Toggle Menu"
         >
           {menuOpen ? <HiX /> : <HiMenu />}
@@ -38,14 +37,13 @@ export default function Header() {
 
       {/* Mobile Menu (Always in DOM for smooth transition) */}
       <div
-        className={`absolute top-16 left-0 w-full bg-background shadow-md border-t border-[#27548A] flex flex-col items-end px-4 py-4 space-y-4 md:hidden transition-all duration-500 ease-in-out ${
+        className={`absolute top-16 left-0 w-full bg-background shadow-md border-b border-dashed border-[#74512D] flex flex-col items-end px-5 py-4 space-y-4 md:hidden transition-all duration-300 ease-in-out ${
           menuOpen ? 'opacity-100 translate-y-0 max-h-96' : 'opacity-0 -translate-y-4 max-h-0 overflow-hidden'
         }`}
       >
-        <button className="text-md font-open font-semibold text-[#27548A]">Categories</button>
-        <button className="text-md font-open font-semibold text-[#27548A]">Donate</button>
-        <button className="text-md font-open font-semibold text-[#27548A]">About us</button>
-        <button className="text-md font-open font-semibold text-[#27548A]">Log in</button>
+        <button className="text-md font-open font-semibold text-[#74512D]">Categories</button>
+        <button className="text-md font-open font-semibold text-[#74512D]">Donate</button>
+        <button className="text-md font-open font-semibold text-[#74512D]">About me</button>
       </div>
     </header>
   )
