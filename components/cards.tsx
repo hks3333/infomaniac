@@ -2,17 +2,24 @@
 
 import Image from 'next/image';
 import { IconArrowUpRight } from '@tabler/icons-react';
+import { useRouter } from 'next/navigation';
 
 interface CardProps {
   title: string;
   category: string;
   subtitle: string;
   image: string;
+  slug: string;
+  content: string;
 }
 
-export default function Cards({ title, category, subtitle, image }: CardProps) {
+export default function Cards({ title, category, subtitle, image, slug, content }: CardProps) {
+  const router = useRouter();
+
   return (
-    <div className="flex-grow min-w-sm w-1/4 bg-[#FEBA17] rounded-2xl overflow-hidden group cursor-pointer border-dashed border-1">
+    <div className="flex-grow min-w-sm w-1/4 bg-[#FEBA17] rounded-2xl overflow-hidden group cursor-pointer border-dashed border-1"
+    onClick={() => router.push(`/blog/${slug}`)}>
+
       <div className="relative h-[300px] w-full overflow-hidden">
         <Image
           src={image}

@@ -2,9 +2,11 @@
 
 import { useState } from "react"
 import { HiMenu, HiX } from "react-icons/hi"
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const router = useRouter();
 
   return (
     <header className="h-16 bg-background w-full flex justify-between items-center px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 border-b border-dashed border-[#74512D] fixed top-0 left-0 z-50">
@@ -15,15 +17,16 @@ export default function Header() {
 
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center space-x-6">
-        <button className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">Categories</button>
+        <button onClick={() => router.push('/categories')} className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">Categories</button>
         <button className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">Donate</button>
         <button className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">About me</button>
         <button className="text-sm font-open font-semibold cursor-pointer bg-[#74512D] text-background px-4 py-2 rounded-full">Subscribe</button>
       </div>
-
+    
       {/* Mobile Nav Button */}
       <div className="md:hidden flex items-center">
-        <button className="text-sm font-open font-semibold bg-[#74512D] text-white px-3 py-2 mr-2">
+        <button onClick={() => router.push('/categories')} 
+        className="text-sm font-open font-semibold bg-[#74512D] text-white px-3 py-2 mr-2 rounded-full">
           Subscribe
         </button>
         <button
