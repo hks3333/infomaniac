@@ -4,9 +4,8 @@ import Image from 'next/image';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
-  const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+export default function BlogPage({ params }: { params: { slug: string } }) {
+  const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) return notFound();
 
