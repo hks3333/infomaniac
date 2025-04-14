@@ -9,25 +9,10 @@ import {
 } from '@tabler/icons-react';
 import { useState } from 'react';
 
-const randomDates = [
-  'Apr 13, 2025',
-  'Mar 28, 2025',
-  'Feb 10, 2025',
-  'Jan 15, 2025',
-  'Dec 5, 2024',
-  'Nov 21, 2024',
-  'Oct 7, 2024',
-];
-
-function getRandomDate() {
-  return randomDates[Math.floor(Math.random() * randomDates.length)];
-}
-
 
 export default function PostMeta({ date }: { date: string }) {
   const [liked, setLiked] = useState(false);
   const [copied, setCopied] = useState(false);
-  const randomDate = getRandomDate();
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -48,7 +33,7 @@ export default function PostMeta({ date }: { date: string }) {
     <div className="flex flex-wrap items-center justify-between text-sm text-muted-foreground mb-6 gap-4 border-y border-dashed py-4">
       {/* Left: Date */}
       <span className="text-foreground font-medium font-open">
-        {randomDate}
+        Oct 7, 2024
       </span>
 
 

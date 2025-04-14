@@ -117,7 +117,7 @@ export default function Comments() {
       <h3 className="text-3xl font-della font-bold text-[#74512D]">Comments</h3>
 
       {/* New comment form */}
-      <div className="border-y-2 border-dashed py-4 mb-12">
+      <div className="py-4 mb-12">
         <h4 className="font-medium font-open mb-2">Add a comment</h4>
         <textarea
           ref={commentInputRef}
@@ -129,7 +129,7 @@ export default function Comments() {
         />
         <button
           onClick={postComment}
-          className="px-4 py-1 bg-[#74512D] text-white rounded"
+          className="px-4 py-2 bg-[#74512D] text-white rounded-full"
         >
           Post Comment
         </button>

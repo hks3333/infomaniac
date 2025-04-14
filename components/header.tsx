@@ -4,11 +4,14 @@ import { useState } from "react"
 import { HiMenu, HiX } from "react-icons/hi"
 import { useRouter } from 'next/navigation';
 import SubscribeModal from "./subscribe-modal"
+import DonateModal from '@/components/donate-modal';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showSubscribe, setShowSubscribe] = useState(false)
   const router = useRouter();
+  const [showDonate, setShowDonate] = useState(false)
+
 
   return (
     <>
@@ -21,8 +24,8 @@ export default function Header() {
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center space-x-6">
         <button onClick={() => router.push('/categories')} className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">Categories</button>
-        <button className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">Donate</button>
-        <button className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">About me</button>
+        <button onClick={() => setShowDonate(true)} className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">Donate</button>
+        <button onClick={() => router.push('/about')} className="text-sm font-open font-semibold cursor-pointer text-[#74512D]">About me</button>
         <button onClick={() => setShowSubscribe(true)}
         className="text-sm font-open font-semibold cursor-pointer bg-[#74512D] text-background px-4 py-2 rounded-full">Subscribe</button>
       </div>
@@ -48,12 +51,13 @@ export default function Header() {
           menuOpen ? 'opacity-100 translate-y-0 max-h-96' : 'opacity-0 -translate-y-4 max-h-0 overflow-hidden'
         }`}
       >
-        <button className="text-md font-open font-semibold text-[#74512D]">Categories</button>
-        <button className="text-md font-open font-semibold text-[#74512D]">Donate</button>
-        <button className="text-md font-open font-semibold text-[#74512D]">About me</button>
+        <button onClick={() => router.push('/categories')} className="text-md font-open font-semibold text-[#74512D]">Categories</button>
+        <button onClick={() => setShowDonate(true)} className="text-md font-open font-semibold text-[#74512D]">Donate</button>
+        <button onClick={() => router.push('/about')} className="text-md font-open font-semibold text-[#74512D]">About me</button>
       </div>
     </header>
     <SubscribeModal show={showSubscribe} onClose={() => setShowSubscribe(false)} />
+    <DonateModal show={showDonate} onClose={() => setShowDonate(false)} />
     </>
   )
 }
