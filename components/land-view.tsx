@@ -13,7 +13,7 @@ export default function LandView() {
                 <Image src="/img16.jpg" alt="Land View" fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 66vw" priority />
 
                 {/* Overlay with fade-out on hover */}
-                <div className="absolute inset-0 bg-[#FEBA17] mix-blend-multiply opacity-80 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-[#FEBA17] mix-blend-multiply opacity-80 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Text content */}
                 <div className="absolute bottom-0 right-0 p-6 w-1/2 rounded-tl-4xl text-foreground bg-[#FEBA17]">

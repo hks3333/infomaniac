@@ -7,6 +7,8 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { parseContent } from "@/lib/parseContent";
 import PostMeta from "@/components/post-meta";
+import Comments from '@/components/comments'
+import Subscription from '@/components/subscription';
 
 
 interface blogPosts {
@@ -19,32 +21,20 @@ interface blogPosts {
 }
 
 export default function BlogPage() {
-  const params = useParams(); // Get params using the hook
-  const slug = params.slug; // Access the slug property
-
-  // Note: blogPosts is now filtered on the client side
-  // Ensure slug is a string before using it (useParams can return string | string[])
+  const params = useParams();
+  const slug = params.slug; 
   const post = typeof slug === 'string'
     ? blogPosts.find((p) => p.slug === slug)
     : undefined;
 
   if (!post) {
-    // Option 1 (try this first):
-    // useEffect(() => {
-    //   if (!post) {
-    //     notFound();
-    //   }
-    // }, [post]); // Trigger notFound if post is missing
-
-    // Option 2 (simpler fallback for hackathon):
     return (
-      <div>
+      <div className='w-full h-screen'>
         <Header />
-        <div className="container mx-auto px-4 py-10 text-center">
-          <h1 className="text-2xl font-bold">Post Not Found</h1>
-          <p>Sorry, we couldn't find the post you were looking for.</p>
+        <div className="container mx-auto px-4 py-10 text-center h-full pt-52">
+          <h1 className="text-4xl font-bold font-della mb-8 text-[#74512D]">Post Not Found</h1>
+          <p className='font-open'>Sorry, we couldn't find the post you were looking for.</p>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -75,6 +65,8 @@ export default function BlogPage() {
             <div>{parseContent(post.content)}</div>
           </div>
         </div>
+        <Subscription />
+        <Comments />
       </div>
       <Footer />
     </div>
