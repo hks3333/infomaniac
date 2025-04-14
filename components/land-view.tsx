@@ -10,7 +10,7 @@ export default function LandView() {
         <div className="w-full h-full flex flex-wrap">
             <div className="rounded-4xl relative w-full h-[200px] sm:h-[400px] md:h-[500px] lg:h-[600px] min-w-[400px] group overflow-hidden cursor-pointer border-dashed border-1"
             onClick={() => router.push(`/blog/my-experiences-travelling-to-spain`)}>
-                <Image src="/img1.jpg" alt="Land View" fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 66vw" priority />
+                <Image src="/img16.jpg" alt="Land View" fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 66vw" priority />
 
                 {/* Overlay with fade-out on hover */}
                 <div className="absolute inset-0 bg-[#FEBA17] mix-blend-multiply opacity-80 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />

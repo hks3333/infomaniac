@@ -53,21 +53,23 @@ export default function BlogPage() {
   return (
     <div>
       <Header />
-      <div className="container mt-16 pt-2 sm:pt-3 md:pt-4 lg:pt-6 xl:pt-8 flex flex-col items-center">
-        <div className='border-dashed border-1 w-full max-w-[1000px] rounded-xl overflow-hidden mb-6'>
+      <div className="container mt-16 flex flex-col items-center pt-2 sm:pt-3 md:pt-4 lg:pt-5 xl:pt-6">
+        <div className='relative border-dashed border-1 w-full max-h-[600px] rounded-xl overflow-hidden mb-6'>
         <Image
           src={post.image}
           alt={post.title}
           width={800}
           height={400}
-          className="object-cover w-full"
+          className="object-cover w-full min-h-[350px]"
           priority
         />
+        <div className="absolute inset-0 bg-[#FEBA17] mix-blend-multiply opacity-70 pointer-events-none" />
         </div>
-        <div className="w-full max-w-[700px] mx-auto h-fit">
-          <button className="rounded-full bg-foreground text-background text-sm px-3 py-1 mb-6">{post.category}</button>
+
+        <div className="w-full max-w-[700px] mx-auto h-fit mt-4">
           <h1 className="text-3xl md:text-5xl text-[#74512D] font-della mb-6">{post.title}</h1>
-          <p className="text-lg text-foreground mb-6 font-open font-bold">{post.subtitle}</p>
+          <p className="text-lg text-foreground mb-6 font-open font-semibold">{post.subtitle}</p>
+          <button className="rounded-full bg-foreground text-background text-sm px-3 py-1 mb-3">{post.category}</button>
           <PostMeta date="2025-04-13" />
           <div className="text-lg text-foreground prose lg:prose-xl max-w-none font-open">
             <div>{parseContent(post.content)}</div>

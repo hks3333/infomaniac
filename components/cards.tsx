@@ -10,10 +10,9 @@ interface CardProps {
   subtitle: string;
   image: string;
   slug: string;
-  content: string;
 }
 
-export default function Cards({ title, category, subtitle, image, slug, content }: CardProps) {
+export default function Cards({ title, category, subtitle, image, slug }: CardProps) {
   const router = useRouter();
 
   return (
