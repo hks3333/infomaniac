@@ -17,7 +17,7 @@ export default function Header() {
     <>
     <header className="h-16 bg-background w-full flex justify-between items-center px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 border-b border-dashed border-[#74512D] fixed top-0 left-0 z-50">
       {/* Logo */}
-      <div className="text-3xl font-semibold font-della text-[#74512D] cursor-pointer" onClick={() => router.push('/')}>
+      <div className="text-3xl font-semibold font-della text-[#74512D] cursor-pointer select-none" onClick={() => router.push('/')}>
         Infomaniac
       </div>
 

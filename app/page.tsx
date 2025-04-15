@@ -11,7 +11,8 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div>
+    <>
+    <div className="px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
       <Header />
       <div className="w-full h-fit mt-16 pt-2 sm:pt-3 md:pt-4 lg:pt-6 xl:pt-8 ">
         <div className="hidden md:block">
@@ -105,8 +106,9 @@ export default function Home() {
         />
 
 
-      </div>
-      <Footer />
+      </div>      
     </div>
+    <Footer />
+    </>
   );
 } 

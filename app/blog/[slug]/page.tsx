@@ -43,7 +43,8 @@ export default function BlogPage() {
 
 
   return (
-    <div>
+    <>
+    <div className='px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12'>
       <Header />
       <div className="container mt-16 flex flex-col items-center pt-2 sm:pt-3 md:pt-4 lg:pt-5 xl:pt-6">
         <div className='relative border-dashed border-1 w-full max-h-[600px] rounded-4xl overflow-hidden mb-6'>
@@ -71,7 +72,8 @@ export default function BlogPage() {
         <Subscription />
         <Comments />
       </div>
-      <Footer />
     </div>
+    <Footer />
+    </>
   );
 }

@@ -21,7 +21,8 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className="mt-16 pt-2 sm:pt-3 md:pt-4 lg:pt-5 xl:pt-6">
+    <>
+    <div className="mt-16 pt-2 sm:pt-3 md:pt-4 lg:pt-5 xl:pt-6 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
       <Header />
       <div className="container mx-auto pt-6">
         <h1 className="text-5xl font-della text-[#74512D] mb-10 text-center">
@@ -40,7 +41,8 @@ export default function CategoryPage() {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
+    <Footer />
+    </>
   )
 }

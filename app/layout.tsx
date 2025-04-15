@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${slkscreen.variable} ${della.variable} ${opensans.variable} antialiased px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12`}
+        className={`${slkscreen.variable} ${della.variable} ${opensans.variable} antialiased`}
       >
         {children}
       </body>

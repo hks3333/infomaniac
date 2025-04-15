@@ -37,7 +37,7 @@ export default function CategoriesPage() {
   return (
     <>
     <Header />
-    <div className="w-full mt-16 pt-2 sm:pt-3 md:pt-4 lg:pt-5 xl:pt-6">
+    <div className="w-full mt-16 pt-2 sm:pt-3 md:pt-4 lg:pt-5 xl:pt-6 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
       {categories.map((cat) => (
         <Link key={cat.slug} href={`/categories/${cat.slug}`}>
           <div className="relative w-full h-[300px] sm:h-[400px] mb-6 group overflow-hidden cursor-pointer rounded-4xl border border-dashed">
@@ -56,8 +56,8 @@ export default function CategoriesPage() {
           </div>
         </Link>
       ))}
-      <Footer />
     </div>
+    <Footer />
     </>
   )
 }
