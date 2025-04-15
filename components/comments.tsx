@@ -123,7 +123,7 @@ export default function Comments() {
           ref={commentInputRef}
           value={newComment}
           onChange={e => setNewComment(e.target.value)}
-          className="w-full border rounded p-2 mb-2"
+          className="w-full border border-dashed rounded p-2 mb-2"
           rows={3}
           placeholder="Write your comment..."
         />

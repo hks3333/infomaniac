@@ -34,7 +34,7 @@ export default function DonateModal({ show, onClose }: { show: boolean, onClose:
         </button>
 
         {/* Modal Content */}
-        <h2 className="text-2xl font-della text-[#74512D] mb-4">Support this blog ❤️</h2>
+        <h2 className="text-2xl font-della font-semibold text-[#74512D] mb-4">Support this blog ❤️</h2>
         <p className="text-sm mb-8 font-open text-foreground">If you enjoy the content, consider donating a small amount to keep it going.</p>
 
         <form className="flex flex-col gap-4">
@@ -42,11 +42,11 @@ export default function DonateModal({ show, onClose }: { show: boolean, onClose:
             type="number"
             min={1}
             placeholder="Enter amount ($)"
-            className="border border-[#74512D] rounded-lg px-4 py-2 font-open text-sm focus:outline-none"
+            className="border border-dashed border-[#74512D] rounded-lg px-4 py-2 font-open text-sm focus:outline-none"
           />
           <button
             type="submit"
-            className="bg-[#74512D] text-white rounded-full px-4 py-2 text-sm font-semibold hover:bg-[#5c3e1f] cursor-pointer"
+            className="bg-[#74512D] text-white rounded-full px-4 py-2 text-sm font-open font-semibold hover:bg-[#5c3e1f] cursor-pointer"
           >
             Donate
           </button>

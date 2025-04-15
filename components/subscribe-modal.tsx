@@ -34,13 +34,13 @@ export default function SubscribeModal({ show, onClose }: { show: boolean, onClo
         </button>
 
         {/* Modal Content */}
-        <h2 className="text-2xl font-della text-[#74512D] mb-4">Thoughts, delivered to your inbox</h2>
+        <h2 className="text-2xl font-della font-semibold text-[#74512D] mb-4">Thoughts, delivered to your inbox</h2>
         <p className="text-sm mb-8 font-open text-foreground">Join 10,000+ readers and get our latest posts and updates.</p>
         <form className="flex flex-col gap-4">
           <input
             type="email"
             placeholder="Enter your email"
-            className="border border-[#74512D] rounded-lg px-4 py-2 font-open text-sm focus:outline-none"
+            className="border border-dashed border-[#74512D] rounded-lg px-4 py-2 font-open text-sm focus:outline-none"
           />
           <button
             type="submit"

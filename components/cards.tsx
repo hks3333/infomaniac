@@ -16,7 +16,7 @@ export default function Cards({ title, category, subtitle, image, slug }: CardPr
   const router = useRouter();
 
   return (
-    <div className="flex-grow min-w-sm w-1/4 bg-[#FEBA17] rounded-2xl overflow-hidden group cursor-pointer border-dashed border-1"
+    <div className="flex-grow min-w-sm w-1/4 bg-[#FEBA17] rounded-2xl overflow-hidden group cursor-pointer border-dashed border-1 select-none"
       onClick={() => router.push(`/blog/${slug}`)}>
 
       <div className="relative h-[300px] w-full overflow-hidden">
@@ -30,7 +30,10 @@ export default function Cards({ title, category, subtitle, image, slug }: CardPr
       </div>
       <div className="px-4 py-8">
         <div className="flex items-center justify-between">
-          <button className="rounded-full bg-background text-foreground text-xs px-3 py-1 mb-2">{category}</button>
+          <button onClick={(e) => {
+            e.stopPropagation();
+            router.push(`/categories/${category.toLowerCase()}`);
+          }} className="rounded-full bg-background text-foreground text-xs px-3 py-1 mb-2 cursor-pointer hover:bg-[#74512D] hover:text-background transition-colors">{category}</button>
           <IconArrowUpRight />
         </div>
         <h2 className="text-3xl font-della text-foreground mt-1">{title}</h2>

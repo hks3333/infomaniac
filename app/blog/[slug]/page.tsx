@@ -9,6 +9,7 @@ import { parseContent } from "@/lib/parseContent";
 import PostMeta from "@/components/post-meta";
 import Comments from '@/components/comments'
 import Subscription from '@/components/subscription';
+import { useRouter } from 'next/navigation';
 
 
 interface blogPosts {
@@ -21,6 +22,7 @@ interface blogPosts {
 }
 
 export default function BlogPage() {
+  const router = useRouter();
   const params = useParams();
   const slug = params.slug; 
   const post = typeof slug === 'string'
@@ -44,7 +46,7 @@ export default function BlogPage() {
     <div>
       <Header />
       <div className="container mt-16 flex flex-col items-center pt-2 sm:pt-3 md:pt-4 lg:pt-5 xl:pt-6">
-        <div className='relative border-dashed border-1 w-full max-h-[600px] rounded-xl overflow-hidden mb-6'>
+        <div className='relative border-dashed border-1 w-full max-h-[600px] rounded-4xl overflow-hidden mb-6'>
         <Image
           src={post.image}
           alt={post.title}
@@ -59,7 +61,8 @@ export default function BlogPage() {
         <div className="w-full max-w-[700px] mx-auto h-fit mt-4">
           <h1 className="text-3xl md:text-5xl text-[#74512D] font-della mb-6">{post.title}</h1>
           <p className="text-lg text-foreground mb-6 font-open font-semibold">{post.subtitle}</p>
-          <button className="rounded-full bg-foreground text-background text-sm px-3 py-1 mb-3">{post.category}</button>
+          <button onClick={() => router.push(`/categories/${post.category.toLowerCase()}`)}
+          className="rounded-full bg-foreground text-background text-sm px-3 py-1 mb-3 cursor-pointer">{post.category}</button>
           <PostMeta date="2025-04-13" />
           <div className="text-lg text-foreground prose lg:prose-xl max-w-none font-open">
             <div>{parseContent(post.content)}</div>
