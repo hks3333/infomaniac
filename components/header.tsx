@@ -23,13 +23,13 @@ export default function Header() {
 
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center space-x-6">
-        <button onClick={() => router.push('/categories')} className="text-sm font-open font-semibold cursor-pointer text-[#74512D] hover:text-black transition-colors duration-300">
+        <button onClick={() => router.push('/categories')} className="text-sm font-open font-semibold cursor-pointer text-red-600 hover:text-red-800 transition-colors duration-300">
           Categories
         </button>
-        <button onClick={() => setShowDonate(true)} className="text-sm font-open font-semibold cursor-pointer text-[#74512D] hover:text-black transition-colors duration-200">Donate</button>
-        <button onClick={() => router.push('/about')} className="text-sm font-open font-semibold cursor-pointer text-[#74512D] hover:text-black transition-colors duration-200">About me</button>
+        <button onClick={() => setShowDonate(true)} className="text-sm font-open font-semibold cursor-pointer text-red-600 hover:text-red-800 transition-colors duration-200">Donate</button>
+        <button onClick={() => router.push('/about')} className="text-sm font-open font-semibold cursor-pointer text-red-600 hover:text-red-800 transition-colors duration-200">About me</button>
         <button onClick={() => setShowSubscribe(true)}
-        className="text-sm font-open font-semibold cursor-pointer bg-[#74512D] text-background px-4 py-2 rounded-full shadow-none hover:shadow-[0_0_32px_#FEBA17] transition-shadow duration-300">
+        className="text-sm font-open font-semibold cursor-not-allowed opacity-50 pointer-events-none bg-[#74512D] text-background px-4 py-2 rounded-full shadow-none hover:shadow-[0_0_32px_#FEBA17] transition-shadow duration-300">
           Subscribe
         </button>
       </div>

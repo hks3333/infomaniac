@@ -9,7 +9,7 @@ const command = args[0];
 if (!['inject', 'revert'].includes(command)) {
   console.log(`
 Usage:
-  node scripts/demo-bug.js inject   - Injects a z-index bug into the header
+  node scripts/demo-bug.js inject   - Injects visual changes and a deactivated button
   node scripts/demo-bug.js revert   - Reverts the header back to normal
 `);
   process.exit(1);
@@ -18,21 +18,53 @@ Usage:
 let content = fs.readFileSync(HEADER_FILE, 'utf-8');
 
 if (command === 'inject') {
-  if (content.includes('z-[-1]')) {
+  if (content.includes('text-red-600')) {
     console.log('Bug is already injected!');
     process.exit(0);
   }
-  // Replace z-50 with z-[-1] which breaks the interactivity of the header and subscribe button
-  content = content.replace('z-50', 'z-[-1]');
+  
+  // 1. Change the text color of Categories, Donate, and About me to red
+  content = content.replace(/text-\[\#74512D\] hover:text-black/g, 'text-red-600 hover:text-red-800');
+  
+  // 2. Break the Subscribe button (make it deactivated and unclickable)
+  content = content.replace(
+    'cursor-pointer bg-[#74512D]', 
+    'cursor-not-allowed opacity-50 pointer-events-none bg-[#74512D]'
+  );
+
   fs.writeFileSync(HEADER_FILE, content);
-  console.log('✅ Bug injected: Changed header z-index to -1. The navigation and subscribe buttons are now unclickable!');
+  
+  console.log(`
+✅ Changes injected successfully!
+
+[WHAT CHANGED]
+1. The nav links (Categories, Donate, About me) are now red.
+2. The Subscribe button has been deactivated (opacity-50, pointer-events-none).
+
+[SUGGESTED PR MESSAGE]
+Title: style: update navigation link colors to red for better visibility
+
+Body:
+As discussed with the design team, we wanted to make the top navigation links pop more, so I changed them to a brighter red color. I also adjusted some button states in the header to match the new design system.
+
+(Note: I might have accidentally messed up the Subscribe button classes while editing the button states, let's see if FixLoop catches it!)
+  `);
 } 
 else if (command === 'revert') {
-  if (content.includes('z-50')) {
+  if (!content.includes('text-red-600')) {
     console.log('Header is already normal!');
     process.exit(0);
   }
-  content = content.replace('z-[-1]', 'z-50');
+  
+  // 1. Revert colors
+  content = content.replace(/text-red-600 hover:text-red-800/g, 'text-[#74512D] hover:text-black');
+  
+  // 2. Revert Subscribe button
+  content = content.replace(
+    'cursor-not-allowed opacity-50 pointer-events-none bg-[#74512D]',
+    'cursor-pointer bg-[#74512D]'
+  );
+
   fs.writeFileSync(HEADER_FILE, content);
-  console.log('✅ Bug reverted: Header restored to normal.');
+  console.log('✅ Changes reverted: Header restored to normal.');
 }
