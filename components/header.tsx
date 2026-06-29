@@ -27,9 +27,9 @@ export default function Header() {
           Categories
         </button>
         <button onClick={() => setShowDonate(true)} className="text-sm font-open font-semibold cursor-pointer text-red-600 hover:text-red-800 transition-colors duration-200">Donate</button>
-        <button onClick={() => router.push('/about')} className="text-sm font-open font-semibold cursor-pointer text-red-600 hover:text-red-800 transition-colors duration-200">About me</button>
+        <button onClick={() => router.push('/about')} className="text-sm font-open font-semibold cursor-pointer text-red-600 hover:text-red-800 transition-colors duration-200">About</button>
         <button onClick={() => setShowSubscribe(true)}
-        className="text-sm font-open font-semibold cursor-not-allowed opacity-50 pointer-events-none bg-[#74512D] text-background px-4 py-2 rounded-full shadow-none hover:shadow-[0_0_32px_#FEBA17] transition-shadow duration-300">
+        className="text-sm font-open font-semibold cursor-pointer bg-[#74512D] text-background px-4 py-2 rounded-full shadow-none hover:shadow-[0_0_32px_#FEBA17] transition-shadow duration-300">
           Subscribe
         </button>
       </div>
@@ -57,7 +57,7 @@ export default function Header() {
       >
         <button onClick={() => router.push('/categories')} className="text-md font-open font-semibold text-[#74512D]">Categories</button>
         <button onClick={() => setShowDonate(true)} className="text-md font-open font-semibold text-[#74512D]">Donate</button>
-        <button onClick={() => router.push('/about')} className="text-md font-open font-semibold text-[#74512D]">About me</button>
+        <button onClick={() => router.push('/about')} className="text-md font-open font-semibold text-[#74512D]">About</button>
       </div>
     </header>
     <SubscribeModal show={showSubscribe} onClose={() => setShowSubscribe(false)} />

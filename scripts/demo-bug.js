@@ -9,7 +9,7 @@ const command = args[0];
 if (!['inject', 'revert'].includes(command)) {
   console.log(`
 Usage:
-  node scripts/demo-bug.js inject   - Injects visual changes and a deactivated button
+  node scripts/demo-bug.js inject   - Injects the text change and the accidental red colors
   node scripts/demo-bug.js revert   - Reverts the header back to normal
 `);
   process.exit(1);
@@ -23,14 +23,12 @@ if (command === 'inject') {
     process.exit(0);
   }
   
-  // 1. Change the text color of Categories, Donate, and About me to red
-  content = content.replace(/text-\[\#74512D\] hover:text-black/g, 'text-red-600 hover:text-red-800');
+  // 1. INTENTIONAL CHANGE: Change "About me" text to "About"
+  content = content.replace(/>About me</g, '>About<');
   
-  // 2. Break the Subscribe button (make it deactivated and unclickable)
-  content = content.replace(
-    'cursor-pointer bg-[#74512D]', 
-    'cursor-not-allowed opacity-50 pointer-events-none bg-[#74512D]'
-  );
+  // 2. UNINTENTIONAL BUG: Change the text color of Categories, Donate, and About to red
+  // (Simulating a CSS class mistake by the developer)
+  content = content.replace(/text-\[\#74512D\] hover:text-black/g, 'text-red-600 hover:text-red-800');
 
   fs.writeFileSync(HEADER_FILE, content);
   
@@ -38,16 +36,16 @@ if (command === 'inject') {
 ✅ Changes injected successfully!
 
 [WHAT CHANGED]
-1. The nav links (Categories, Donate, About me) are now red.
-2. The Subscribe button has been deactivated (opacity-50, pointer-events-none).
+1. Intentional: "About me" text is now "About".
+2. Accidental: All the navigation links turned red due to a bad copy-paste!
 
 [SUGGESTED PR MESSAGE]
-Title: style: update navigation link colors to red for better visibility
+Title: refactor: change About Me link text to just About
 
 Body:
-As discussed with the design team, we wanted to make the top navigation links pop more, so I changed them to a brighter red color. I also adjusted some button states in the header to match the new design system.
+The design team requested that we shorten the "About me" navigation link to just "About" to save some horizontal space in the header. 
 
-(Note: I might have accidentally messed up the Subscribe button classes while editing the button states, let's see if FixLoop catches it!)
+This PR only updates that text string, no styling changes were made!
   `);
 } 
 else if (command === 'revert') {
@@ -56,15 +54,12 @@ else if (command === 'revert') {
     process.exit(0);
   }
   
-  // 1. Revert colors
+  // 1. Revert text
+  content = content.replace(/>About</g, '>About me<');
+  
+  // 2. Revert colors
   content = content.replace(/text-red-600 hover:text-red-800/g, 'text-[#74512D] hover:text-black');
   
-  // 2. Revert Subscribe button
-  content = content.replace(
-    'cursor-not-allowed opacity-50 pointer-events-none bg-[#74512D]',
-    'cursor-pointer bg-[#74512D]'
-  );
-
   fs.writeFileSync(HEADER_FILE, content);
   console.log('✅ Changes reverted: Header restored to normal.');
 }
